@@ -30,3 +30,18 @@ module "nsg" {
 
   tags = var.tags
 }
+
+resource "azurerm_subnet_network_security_group_association" "aks" {
+  subnet_id                 = module.network.subnet_ids["aks"]
+  network_security_group_id = module.nsg.aks_nsg_id
+}
+
+resource "azurerm_subnet_network_security_group_association" "app_gateway" {
+  subnet_id                 = module.network.subnet_ids["app-gateway"]
+  network_security_group_id = module.nsg.app_gateway_nsg_id
+}
+
+resource "azurerm_subnet_network_security_group_association" "private_endpoints" {
+  subnet_id                 = module.network.subnet_ids["private-endpoints"]
+  network_security_group_id = module.nsg.private_endpoints_nsg_id
+}
