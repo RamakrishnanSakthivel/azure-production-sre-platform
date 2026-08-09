@@ -17,3 +17,16 @@ module "network" {
   subnets       = var.subnets
   tags          = var.tags
 }
+
+module "nsg" {
+  source = "../../modules/nsg"
+
+  resource_group_name = module.resource_group.resource_group_name
+  location            = var.location
+
+  aks_nsg_name               = var.aks_nsg_name
+  app_gateway_nsg_name       = var.app_gateway_nsg_name
+  private_endpoints_nsg_name = var.private_endpoints_nsg_name
+
+  tags = var.tags
+}

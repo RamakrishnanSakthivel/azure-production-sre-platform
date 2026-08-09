@@ -36,3 +36,18 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "aks_nsg_name" {
+  description = "Name of the AKS subnet NSG."
+  type        = string
+}
+
+variable "app_gateway_nsg_name" {
+  description = "Name of the Application Gateway subnet NSG."
+  type        = string
+}
+
+variable "private_endpoints_nsg_name" {
+  description = "Name of the Private Endpoint subnet NSG."
+  type        = string
+}
