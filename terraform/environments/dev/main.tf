@@ -45,3 +45,13 @@ resource "azurerm_subnet_network_security_group_association" "private_endpoints"
   subnet_id                 = module.network.subnet_ids["private-endpoints"]
   network_security_group_id = module.nsg.private_endpoints_nsg_id
 }
+
+module "container_registry" {
+  source = "../../modules/container-registry"
+
+  resource_group_name = module.resource_group.resource_group_name
+  location            = var.location
+
+  acr_name = var.acr_name
+  tags     = var.tags
+}

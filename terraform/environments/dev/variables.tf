@@ -51,3 +51,8 @@ variable "private_endpoints_nsg_name" {
   description = "Name of the Private Endpoint subnet NSG."
   type        = string
 }
+
+variable "acr_name" {
+  description = "Globally unique name of the Azure Container Registry."
+  type        = string
+}
